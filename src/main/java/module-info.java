@@ -3,6 +3,6 @@ module appli.todolistfx {
     requires javafx.fxml;
 
 
-    opens appli.todolistfx to javafx.fxml;
-    exports appli.todolistfx;
+    opens appli to javafx.fxml;
+    exports appli;
 }
