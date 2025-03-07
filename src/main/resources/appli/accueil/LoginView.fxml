@@ -9,7 +9,7 @@
 <Pane prefHeight="369.0" prefWidth="478.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.accueil.LoginController">
    <children>
    
-                <Label fx:id="welcomeText" layoutX="131.0" layoutY="41.0" prefHeight="66.0" prefWidth="224.0" text="Bienvenu !" textAlignment="CENTER">
+                <Label fx:id="welcomeText" layoutX="131.0" layoutY="41.0" prefHeight="66.0" prefWidth="235.0" text="Bienvenue !" textAlignment="CENTER">
          <font>
             <Font name="Book Antiqua" size="45.0" />
          </font>
@@ -31,8 +31,12 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="203.0" layoutY="330.0" mnemonicParsing="false" text="Inscription" textFill="#0abe00" />
+      <Button layoutX="203.0" layoutY="330.0" mnemonicParsing="false" onAction="#redirectionInscription" text="Inscription" textFill="#0abe00" />
       <Button layoutX="175.0" layoutY="281.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" text="Mot de passe oublié" textFill="RED" />
       <Label fx:id="erreurLabel" layoutX="223.0" layoutY="306.0" prefHeight="17.0" prefWidth="40.0" text="erreur" textFill="#ff00c5" />
+      <Label fx:id="connectedText" layoutX="68.0" layoutY="88.0" prefHeight="66.0" prefWidth="351.0" text=" " textAlignment="CENTER">
+         <font>
+            <Font size="26.0" />
+         </font></Label>
    </children>
 </Pane>
