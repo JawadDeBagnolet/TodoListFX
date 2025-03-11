@@ -38,6 +38,7 @@ public class LoginController {
             connectedText.setText("Email ou Mot de Passe saisi incorrect");
         }
     }
+    @FXML
     void redirectionInscription() throws IOException {
         StartApplication.changeScene("Inscription");
     }

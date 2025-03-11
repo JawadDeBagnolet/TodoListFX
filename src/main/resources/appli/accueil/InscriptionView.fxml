@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="appli.accueil.InscriptionController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="545.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.accueil.InscriptionController">
+   <children>
+      <Label fx:id="welcomeText" layoutX="141.0" layoutY="51.0" prefHeight="66.0" prefWidth="235.0" text="Bienvenue !" textAlignment="CENTER">
+         <font>
+            <Font name="Book Antiqua" size="45.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nomField" layoutX="178.0" layoutY="162.0" />
+      <Label layoutX="132.0" layoutY="164.0" prefHeight="13.0" prefWidth="80.0" text="Nom :">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="prenomField" layoutX="178.0" layoutY="195.0" />
+      <Label layoutX="112.0" layoutY="197.0" prefHeight="21.0" prefWidth="65.0" text="Prénom :">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="inscriptionButton" layoutX="213.0" layoutY="340.0" mnemonicParsing="false" onAction="#redirectionInscription" text="Inscription" textFill="#0abe00" />
+      <Label fx:id="connectedText" layoutX="78.0" layoutY="98.0" prefHeight="66.0" prefWidth="351.0" text=" " textAlignment="CENTER">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="emailField" layoutX="178.0" layoutY="228.0" />
+      <Label layoutX="124.0" layoutY="230.0" prefHeight="21.0" prefWidth="47.0" text="Email :">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="mdpField" layoutX="178.0" layoutY="260.0" />
+      <Label layoutX="76.0" layoutY="262.0" prefHeight="21.0" prefWidth="101.0" text="Mot de passe :">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="confirmationMdpField" layoutX="178.0" layoutY="293.0" />
+      <Label layoutX="76.0" layoutY="295.0" prefHeight="21.0" prefWidth="101.0" text="Confirmation :">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
