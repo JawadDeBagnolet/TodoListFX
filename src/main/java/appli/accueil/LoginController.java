@@ -13,18 +13,23 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
-    public static Stage mainStage;
-    public Button connexionButton;
-    public Hyperlink inscriptionHyperlink;
-    public Label mdpText;
+    private static Stage mainStage;
     @FXML
-    public TextField mdpField;
-    public Label emailText;
-    public Label connectedText;
+    private Button connexionButton;
+    @FXML
+    private Hyperlink inscriptionHyperlink;
+    @FXML
+    private Label mdpText;
+    @FXML
+    private TextField mdpField;
+    @FXML
+    private Label emailText;
+    @FXML
+    private Label connectedText;
     @FXML
     private TextField emailField;
-    public Label erreurLabel;
-
+    @FXML
+    private Label erreurLabel;
     @FXML
     private Label welcomeText;
 
@@ -40,7 +45,7 @@ public class LoginController {
     }
     @FXML
     void redirectionInscription() throws IOException {
-        StartApplication.changeScene("Inscription");
+        StartApplication.changeScene("accueil/Inscription");
     }
     @FXML
     public TextField getMdpField() {
