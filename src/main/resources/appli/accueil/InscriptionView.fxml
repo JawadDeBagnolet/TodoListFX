@@ -2,10 +2,10 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="545.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.accueil.InscriptionController">
    <children>
@@ -38,17 +38,18 @@
             <Font name="System Italic" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="mdpField" layoutX="178.0" layoutY="260.0" />
       <Label layoutX="76.0" layoutY="262.0" prefHeight="21.0" prefWidth="101.0" text="Mot de passe :">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="confirmationMdpField" layoutX="178.0" layoutY="293.0" />
       <Label layoutX="76.0" layoutY="295.0" prefHeight="21.0" prefWidth="101.0" text="Confirmation :">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </Label>
+      <Button fx:id="connexionButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#redirectionConnexion" text="Retour " textFill="#2200ff" />
+      <PasswordField fx:id="confirmationMdpField" layoutX="179.0" layoutY="293.0" />
+      <PasswordField fx:id="mdpField" layoutX="179.0" layoutY="260.0" />
    </children>
 </AnchorPane>
