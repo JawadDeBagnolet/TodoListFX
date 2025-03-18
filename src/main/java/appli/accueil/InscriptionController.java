@@ -7,9 +7,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import repository.UtilisateurRepository;
+import model.Utilisateur;
+
 import java.io.IOException;
 
 public class InscriptionController {
+    @FXML
+    private UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
     @FXML
     private TextField confirmationMdpField;
     @FXML
@@ -28,7 +33,7 @@ public class InscriptionController {
     private Label welcomeText;
 
     @FXML
-    void redirectionInscription(ActionEvent event) {
+    void redirectionInscription(ActionEvent event) throws IOException {
         System.out.println("Nom :  " + nomField.getText());
         System.out.println("Prenom :  " + prenomField.getText());
         System.out.println("Email :  " + emailField.getText());
@@ -45,6 +50,16 @@ public class InscriptionController {
 
         if (confirmationMdpField.getText().isEmpty()||nomField.getText().isEmpty()||prenomField.getText().isEmpty() || emailField.getText().isEmpty() || mdpField.getText().isEmpty()){
             connectedText.setText("Erreur : Champ(s) vide(s) !");
+        }
+        else {
+            Utilisateur user = new Utilisateur(nomField.getText(),prenomField.getText(),emailField.getText(),mdpField.getText());
+            boolean estInstcrit = utilisateurRepository.ajouterUtilisateur(user);
+            if (estInstcrit) {
+                System.out.println("Inscription réussi !");
+                StartApplication.changeScene("accueil/Login");
+            }else {
+                System.out.println("Erreur lors de l'inscription");
+            }
         }
     }
 

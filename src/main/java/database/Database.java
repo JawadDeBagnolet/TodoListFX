@@ -28,5 +28,6 @@ public class Database {
         } else {
             System.out.println("Échec de la connexion à la base de données.");
         }
+
     }
 }

@@ -9,6 +9,9 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Utilisateur;
+import repository.UtilisateurRepository;
+import model.Utilisateur;
 
 import java.io.IOException;
 
@@ -40,6 +43,7 @@ public class LoginController {
         if (getEmailField().getText().equals("email") && getMdpField().getText().equals("Azerty1234")) {
             connectedText.setText("Vous voilà connecte !");
         }else {
+            Utilisateur user = new Utilisateur(emailField.getText(),mdpField.getText());
             connectedText.setText("Email ou Mot de Passe saisi incorrect");
         }
     }
