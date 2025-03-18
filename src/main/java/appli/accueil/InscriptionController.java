@@ -30,6 +30,8 @@ public class InscriptionController {
     @FXML
     private TextField prenomField;
     @FXML
+    private TextField roleField;
+    @FXML
     private Label welcomeText;
 
     @FXML
@@ -38,6 +40,7 @@ public class InscriptionController {
         System.out.println("Prenom :  " + prenomField.getText());
         System.out.println("Email :  " + emailField.getText());
         System.out.println("Mot de Passe :  " + mdpField.getText());
+        System.out.println("Role :  " + roleField.getText());
 
         if (confirmationMdpField.getText().equals(mdpField.getText())) {
             connectedText.setText("Vous voilà Inscrit !");

@@ -21,13 +21,4 @@ public class Database {
         }
         return cnx;
     }
-    public static void main(String[] args) {
-        Connection cnx = getConnexion();
-        if (cnx != null) {
-            System.out.println("Connexion établie avec succès !");
-        } else {
-            System.out.println("Échec de la connexion à la base de données.");
-        }
-
-    }
 }
