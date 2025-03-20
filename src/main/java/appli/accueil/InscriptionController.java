@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import repository.UtilisateurRepository;
 import model.Utilisateur;
 
@@ -36,6 +37,9 @@ public class InscriptionController {
 
     @FXML
     void redirectionInscription(ActionEvent event) throws IOException {
+        UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        Utilisateur utilisateur = utilisateurRepository.getUtilisateurParEmail(emailField.getText());
         System.out.println("Nom :  " + nomField.getText());
         System.out.println("Prenom :  " + prenomField.getText());
         System.out.println("Email :  " + emailField.getText());
@@ -47,7 +51,7 @@ public class InscriptionController {
         } else {
             connectedText.setText("Erreur : Les deux mot de passe sont différents !");
         }
-        if (emailField.getText().equals("email")){
+        if (emailField.getText().equals(utilisateur.getEmail())){
             connectedText.setText("Erreur : Email déjà utilisé !");
         }
 
@@ -55,6 +59,7 @@ public class InscriptionController {
             connectedText.setText("Erreur : Champ(s) vide(s) !");
         }
         else {
+            passwordEncoder.encode(mdpField.getText());
             Utilisateur user = new Utilisateur(nomField.getText(),prenomField.getText(),emailField.getText(),mdpField.getText());
             boolean estInstcrit = utilisateurRepository.ajouterUtilisateur(user);
             if (estInstcrit) {

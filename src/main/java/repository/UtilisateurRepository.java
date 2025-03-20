@@ -15,14 +15,13 @@ public class UtilisateurRepository {
         this.cnx = Database.getConnexion();
     }
     public boolean ajouterUtilisateur(Utilisateur utilisateur) {
-        String sql = "INSERT INTO utilisateur (nom, prenom, email, mdp, role) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO utilisateur (nom, prenom, email, mot_de_passe) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement stmt = cnx.prepareStatement(sql);
             stmt.setString(1, utilisateur.getNom());
             stmt.setString(2, utilisateur.getPrenom());
             stmt.setString(3, utilisateur.getEmail());
             stmt.setString(4, utilisateur.getMdp());
-            stmt.setString(5, utilisateur.getRole());
             stmt.executeUpdate();
             System.out.println("Utilisateur ajouté avec succès !");
             return true;
@@ -34,9 +33,20 @@ public class UtilisateurRepository {
     public Utilisateur getUtilisateurParEmail(String email) {
         String sql = "SELECT * FROM utilisateur WHERE email = ?";
         try {
-            PreparedStatement stmt = this.cnx.prepareStatement(sql);
+            PreparedStatement stmt = cnx.prepareStatement(sql);
             stmt.setString(1, email);
-            stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Utilisateur user = new Utilisateur(
+                        rs.getInt("id_utilisateur"),
+                        rs.getString("nom"),
+                        rs.getString("prenom"),
+                        rs.getString("email"),
+                        rs.getString("mot_de_passe"),
+                        rs.getString("role")
+                );
+                return user;
+            }
         }
         catch (Exception e) {
             System.out.println("Erreur : " + e.getMessage());
@@ -50,14 +60,16 @@ public class UtilisateurRepository {
             ResultSet rs = stmt.executeQuery();
             ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String nom = rs.getString("nom");
-                String prenom = rs.getString("prenom");
-                String email = rs.getString("email");
-                String mdp = rs.getString("mdp");
-                String role = rs.getString("role");
+                Utilisateur utilisateur = new Utilisateur(
+                rs.getInt("id_utilisateur"),
+                rs.getString("nom"),
+                rs.getString("prenom"),
+                rs.getString("email"),
+                rs.getString("mot_de_passe"),
+                rs.getString("role")
+                );
 
-                utilisateurs.add(new Utilisateur(id, nom, prenom, email, mdp, role));
+                utilisateurs.add(utilisateur);
             }
         } catch (SQLException e) {
             System.out.println("Erreur : " + e.getMessage());
