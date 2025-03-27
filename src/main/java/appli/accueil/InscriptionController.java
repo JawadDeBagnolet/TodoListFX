@@ -39,28 +39,27 @@ public class InscriptionController {
     void redirectionInscription(ActionEvent event) throws IOException {
         UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        Utilisateur utilisateur = utilisateurRepository.getUtilisateurParEmail(emailField.getText());
+        Utilisateur utilisateur = new Utilisateur(nomField.getText(), prenomField.getText(),emailField.getText(), passwordEncoder.encode(confirmationMdpField.getText()), "utilisateur");
+
+        /*Utilisateur utilisateur = new utilisateurRepository.getUtilisateurParEmail(emailField.getText());*/
+
         System.out.println("Nom :  " + nomField.getText());
         System.out.println("Prenom :  " + prenomField.getText());
         System.out.println("Email :  " + emailField.getText());
         System.out.println("Mot de Passe :  " + mdpField.getText());
         System.out.println("Role :  " + roleField.getText());
 
-        if (confirmationMdpField.getText().equals(mdpField.getText())) {
-            connectedText.setText("Vous voilà Inscrit !");
-        } else {
-            connectedText.setText("Erreur : Les deux mot de passe sont différents !");
-        }
-        if (emailField.getText().equals(utilisateur.getEmail())){
-            connectedText.setText("Erreur : Email déjà utilisé !");
-        }
-
         if (confirmationMdpField.getText().isEmpty()||nomField.getText().isEmpty()||prenomField.getText().isEmpty() || emailField.getText().isEmpty() || mdpField.getText().isEmpty()){
             connectedText.setText("Erreur : Champ(s) vide(s) !");
-        }
+        }else if (!(confirmationMdpField.getText().equals(mdpField.getText()))) {
+            connectedText.setText("Erreur : Les deux mot de passe sont différents !");
+        }/*else if (emailField.getText().equals(utilisateur.getEmail())){
+            connectedText.setText("Erreur : Email déjà utilisé !");
+        }*/
+
         else {
             passwordEncoder.encode(mdpField.getText());
-            Utilisateur user = new Utilisateur(nomField.getText(),prenomField.getText(),emailField.getText(),mdpField.getText());
+            Utilisateur user = new Utilisateur(nomField.getText(),prenomField.getText(),emailField.getText(),mdpField.getText(),"utilisateur");
             boolean estInstcrit = utilisateurRepository.ajouterUtilisateur(user);
             if (estInstcrit) {
                 System.out.println("Inscription réussi !");

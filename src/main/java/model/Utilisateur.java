@@ -17,11 +17,12 @@ public class Utilisateur {
         this.role = role;
     }
 
-    public Utilisateur(String nom, String prenom, String email, String mdp) {
+    public Utilisateur(String nom, String prenom, String email, String mdp,String role) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.mdp = mdp;
+        this.role = role;
     }
 
     public Utilisateur(String email, String mdp) {

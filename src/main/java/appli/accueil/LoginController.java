@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import repository.UtilisateurRepository;
 import model.Utilisateur;
+import session.SessionUtilisateur;
 
 import java.io.IOException;
 
@@ -42,21 +43,34 @@ public class LoginController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
         Utilisateur utilisateur = utilisateurRepository.getUtilisateurParEmail(emailField.getText());
-        if (utilisateur.getMdp().equals(passwordEncoder.encode(mdpField.getText()))) {
-            connectedText.setText("Vous êtes connecté !");
+        System.out.println("Email saisi : "+getEmailField().getText());
+        System.out.println("Mot de Passe saisi : "+ getMdpField().getText());
+
+        if (utilisateur!= null && passwordEncoder.matches(getMdpField().getText(), utilisateur.getMdp())) {
             System.out.println(utilisateur.getNom());
             System.out.println(utilisateur.getPrenom());
             System.out.println(utilisateur.getRole());
             System.out.println(utilisateur.getEmail());
+
+            System.out.println("Connexion avec succes de l'utilisateur : "+utilisateur.getNom());
+            SessionUtilisateur.getInstance().sauvegardeSession(utilisateur);
+            connectedText.setVisible(false);
             connexionButton.setVisible(true);
-        }else {
-            connectedText.setText("Saisies invalides, réessayez ou inscrivez-vous.");
+        } else{
+            System.out.println("Echec de la connexion, Email ou mot de passe incorrect. Réessayez ou inscrivez-vous.");
+            connectedText.setText("Echec de la connexion, Email ou mot de passe incorrect. Réessayez ou inscrivez-vous.");
             connectedText.setVisible(true);
+            connexionButton.setVisible(true);
         }
-        System.out.println("Email saisi : "+getEmailField().getText());
-        System.out.println("Mot de Passe saisi : "+ getMdpField().getText());
-
-
+        Utilisateur utilisateurActuel = SessionUtilisateur.getInstance().getUtilisateurConnecte();
+        if (utilisateurActuel != null) {
+            System.out.println("Utilisateur connecté : "+utilisateurActuel.getNom());
+        }
+    }
+    @FXML
+    protected void handleLogout(){
+        SessionUtilisateur.getInstance().deconnecter();
+        System.out.println("Utilisateur déconnecté.");
     }
     @FXML
     void redirectionInscription() throws IOException {
