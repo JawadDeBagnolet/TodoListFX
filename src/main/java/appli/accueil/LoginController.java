@@ -67,9 +67,10 @@ public class LoginController {
         }
     }
     @FXML
-    protected void handleLogout(){
+    static void handleLogout() throws IOException {
         SessionUtilisateur.getInstance().deconnecter();
         System.out.println("Utilisateur déconnecté.");
+        StartApplication. changeScene("accueil/LoginView.fxml");
     }
     @FXML
     void redirectionInscription() throws IOException {

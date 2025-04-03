@@ -7,6 +7,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.accueil.GestionUserView">
    <children>
       <Button fx:id="buttonDeconnexion" layoutX="14.0" layoutY="14.0" mnemonicParsing="falsoqe" onAction="#redirectionDeconnexion" text="Déconnexion" />
-      <TableView fx:id="tableauUser" layoutX="200.0" layoutY="91.0" prefHeight="200.0" prefWidth="200.0" />
+      <TableView fx:id="tableauUser" layoutX="121.0" layoutY="63.0" prefHeight="274.0" prefWidth="235.0" />
+      <Button fx:id="buttonSuppr" layoutX="298.0" layoutY="337.0" mnemonicParsing="false" onAction="#onButtonSupprClick" prefHeight="25.0" prefWidth="58.0" text="Suppr" />
    </children>
 </AnchorPane>
