@@ -2,7 +2,6 @@ package appli.accueil;
 
 import appli.StartApplication;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -37,7 +36,6 @@ public class LoginController {
     @FXML
     private Label welcomeText;
 
-
     @FXML
     void onConnexionButtonClick() {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -56,9 +54,10 @@ public class LoginController {
             SessionUtilisateur.getInstance().sauvegardeSession(utilisateur);
             connectedText.setVisible(false);
             connexionButton.setVisible(true);
+            // redirection vers la page suivante
         } else{
-            System.out.println("Echec de la connexion, Email ou mot de passe incorrect. Réessayez ou inscrivez-vous.");
-            connectedText.setText("Echec de la connexion, Email ou mot de passe incorrect. Réessayez ou inscrivez-vous.");
+            System.out.println("Echec de la connexion.");
+            connectedText.setText("Echec de la connexion.");
             connectedText.setVisible(true);
             connexionButton.setVisible(true);
         }
